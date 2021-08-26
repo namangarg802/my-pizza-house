@@ -1,17 +1,24 @@
 import React,{useState,useEffect, useContext} from 'react'
 import {loadStripe} from '@stripe/stripe-js';
 import {CartContext} from './CartContext';
+import {PriceContext} from './CartContext';
+import {Redirect} from 'react-router-dom';
 import Noty from 'noty'; 
 import './styles.css'
 // import { LockClosedIcon } from '@heroicons/react/solid'
 
 export function PaymentForm() {
   const [option,setOption] =useState(true);
+  const [redirect,setRedirect] =useState(false);
   const {cart,setCart}= useContext(CartContext)
+  const {OrderPrice,setOrderPrice}= useContext(PriceContext)
+
   const Order=()=>{
     alert("ORDER PLACED SUCCESSFULLY");
-    setCart({});
+    setRedirect(true);
+    setCart( { items: {} });
   }
+
   const change=()=>{
     option?
     setOption(false):setOption(true);
@@ -24,6 +31,7 @@ export function PaymentForm() {
     //   }).show();
     // }, 1000);
   }
+
   useEffect(async () => {const stripe =await loadStripe('pk_test_51JHNVESEytpiDvNgNbsNoaRmkSpxohXbFc0oDN0ZYuUUcQcjFbMJu9OT2RKH71M3BQ3W9ha0oTBvm32Lol9FMpsQ002qOSBEDv')
   const elements=stripe.elements()
   console.log(elements);
@@ -49,8 +57,9 @@ export function PaymentForm() {
             </div>
     
           </div>
+          <div className=" w-1/4 mx-auto text-center font-bold  rounded-full mt-5 px-4 py-2 rounded-full  "> Cart Total: <span>{OrderPrice}</span></div>
           <button onClick={()=>{Order()}} className="bg-yellow-500  rounded-full mx-auto flex mt-5 px-4 py-2 rounded-full hover:bg-black hover:text-white hover:shadow-lg hover:border-transparent ">Place Order</button>
-
+            {redirect?<Redirect to="/Cart"/>:""}
         </div>
   );
 }

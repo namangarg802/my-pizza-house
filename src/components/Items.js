@@ -24,6 +24,7 @@ function Items(props) {
            _cart.totalItems=0
        }
        _cart.totalItems++;
+      
        console.log(_cart);
        setCart(_cart);
        setAdded(true);

@@ -32,6 +32,7 @@ input:hover::placeholder{
 .emptycartimg{
     height:400px;
     width:400px;
+    
 }
 /* .cartcontainer{
     display: flex;
@@ -42,6 +43,7 @@ input:hover::placeholder{
     font-family: sans-serif;
     font-size: 20px;
 }
+
 nav ul li{
     margin:0px 50px;
     font-family: sans-serif;

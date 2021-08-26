@@ -1,6 +1,8 @@
 import  {useContext, useEffect ,useState} from 'react'
 import { findDOMNode } from 'react-dom';
 import {CartContext} from './CartContext';
+import {PriceContext} from './CartContext';
+import Products from './Products'
 import {Link} from 'react-router-dom';
 import contents from './contents';
 import './styles.css';
@@ -9,9 +11,11 @@ function Cart() {
     const [products,setproducts]= useState([]);
     let total=0;
     const {cart,setCart}= useContext(CartContext)
+    const {OrderPrice,setOrderPrice}= useContext(PriceContext)
+    console.log(cart.totalItems);
     console.log(cart);
        useEffect(() => {
-           if(Object.keys(cart.items).length===0)
+           if(cart.totalItems===0)
            {
             console.log("empty");
             return (<img className="mx-auto w-3/4 mt-12" src="/images/emptycart.jpg" alt="" />)
@@ -19,7 +23,7 @@ function Cart() {
            }
            else
            {
-               console.log(Object.keys(cart.items).length);
+            //    console.log(Object.keys(cart.items));
 
            
             (Object.keys(cart.items)).map((m,i)=>{
@@ -27,14 +31,9 @@ function Cart() {
                 contents.map((content,j)=>{
                     if(content._id===m )
                 {
-                    console.log("naman",i,j);
-                    // console.log();
-                    // const pizza={...products}
+                    console.log("naman",i,j);  
                    if(products){
-                    // setproducts(old=>[...products,content]);
                      products.push(content);
-                    // setproducts(...products,content);
-                    // quantity.push
                    }
                     console.log(content.name);
                 }
@@ -42,11 +41,7 @@ function Cart() {
                 })
                 
             })
-        }
-            
-           
-           
-           
+        } 
        }, [cart]);
        
 
@@ -79,10 +74,13 @@ function Cart() {
 
       }
       const getSum=(product)=>{
-           const p=product.price
+           const p=product.price;
+           const _cart={...cart};
            const sum=p*getquantity(product)
            let t=0
            sum?total=total+sum:t=1;
+           setOrderPrice(total)
+        //   OrderPrice=sum;
           return sum;    
       }
       const Ondelete=(productid)=>{
@@ -103,7 +101,7 @@ function Cart() {
       
   
     return (
-        Object.keys(cart.items).length? 
+        cart.totalItems? 
         <div>
             <div className="container mb-10 pr-20 ">
                 <h1 className="font-bold my-5  mx-40 font">Cart Items</h1>
@@ -151,9 +149,11 @@ function Cart() {
         </div>
         </div>
         :
-      <div className="emptycart">
-          <h1 className=" mt-3 text-4xl font-bold"> Empty Cart</h1>
-           <img className="mx-auto mb-5 emptycartimg w-1/2 mt-5" src="/images/emptycart.jpg" alt="" />
+      <div style={{fontFamily: 'sans-serif'}} className="emptycart">
+          <h1 className=" mt-3 text-4xl font-bold">Cart Empty</h1>
+          <div className="bg-yellow-500 rounded-full font-bold p-2 hover:bg-black hover:text-white"><Link to="/Products" >Add Items</Link></div>
+          
+           <img className="mx-auto mb-5 emptycartimg mt-5" src="/images/emptycart.jpg" alt="" />
            </div>
         
        

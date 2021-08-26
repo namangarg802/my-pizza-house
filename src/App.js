@@ -7,15 +7,18 @@ import Cart from './components/Cart';
 import SingleItem from './components/SingleItem';
 import {CartContext} from './components/CartContext';
 import {NavContext} from './components/CartContext';
+import {PriceContext} from './components/CartContext';
 import userEvent from '@testing-library/user-event';
 import {PaymentForm} from './components/PaymentForm'
 function App() {
-  const [cart,setCart]=useState({});
+const [cart, setCart] = useState(() => {
+  return JSON.parse(window.localStorage.getItem("cart")) || { items: {} }
+});
   let [showNav,setNav]=useState();
+  const [OrderPrice,setOrderPrice]=useState('0');
   useEffect(() => {
-    // window.localStorage.clear();
+    
       const cart=window.localStorage.getItem('cart');
-      setCart(JSON.parse(cart));
       setNav(false);
       console.log(showNav);
       console.log(JSON.parse(cart));
@@ -29,6 +32,8 @@ function App() {
    <Router>
      <CartContext.Provider value={{cart,setCart}}>
      <NavContext.Provider value={{showNav,setNav}}>
+     <PriceContext.Provider value={{OrderPrice,setOrderPrice}}>
+
      <Nav/>
      <Switch>
        <Route path="/" component={Home} exact></Route>
@@ -37,6 +42,7 @@ function App() {
        <Route path="/cart" component={Cart} exact></Route>
        <Route path="/PaymentForm" component={PaymentForm} exact></Route>
      </Switch>
+     </PriceContext.Provider>
       </NavContext.Provider>
      </CartContext.Provider>
     

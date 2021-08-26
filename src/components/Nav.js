@@ -5,9 +5,9 @@ import './styles.css';
 import {NavContext} from './CartContext';
 function Nav() {
     const { cart } = useContext(CartContext);
-    // const [showNav,setNav]=useState(false);
+    const [showNav,setNav]=useState(false);
    
-   const {showNav,setNav}= useContext(NavContext)
+//    const {showNav,setNav}= useContext(NavContext)
     return (
        
         <>
