@@ -1,3 +1,13 @@
+# my-pizza-house.
+This is my-pizza-house project created with react js.
+Project is Hosted on heroku.
+Click:[https://my-pizza-house.herokuapp.com/] to view my project in your broser
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
