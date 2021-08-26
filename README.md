@@ -1,7 +1,16 @@
 # my-pizza-house.
 This is my-pizza-house project created with react js.
 Project is Hosted on heroku.
+<<<<<<< HEAD
 Click:[https://my-pizza-house.herokuapp.com/] to view my project in your browser
+=======
+Click:[https://my-pizza-house.herokuapp.com/] to view my project in your broser
+
+
+
+
+
+>>>>>>> bc4da2cd8b7b0e3dc983c986121a6f548079947d
 
 # Getting Started with Create React App
 
