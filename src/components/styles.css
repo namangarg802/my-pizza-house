@@ -355,6 +355,9 @@ nav ul #hidden{
         height: 200px;
         width: 220px;
     }
+    .footer ul{
+        margin-lright: 20px;
+    }
       
   }
   @media screen and (max-width:350px) {
@@ -398,4 +401,40 @@ nav ul #hidden{
       }
   }
 
-  
+.footer{
+    /* background: #F59E0D; */
+    
+    /* width:100wh; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.footer ul {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.footer ul li{
+    margin-left: 40px;
+    margin-top: 20px;
+    cursor: pointer;
+    padding: 10px;
+}
+.footer ul li:hover {
+    color: white;
+    background: #F59E0D;
+    border-radius: 15px;
+    transition: .5s;
+    /* height: 200px; */
+}
+.footer p{
+    margin:0px 50px;
+    font-family: sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-weight:300;
+    padding: 7px 13px;
+    
+}

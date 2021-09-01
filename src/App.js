@@ -10,6 +10,7 @@ import {NavContext} from './components/CartContext';
 import {PriceContext} from './components/CartContext';
 import userEvent from '@testing-library/user-event';
 import {PaymentForm} from './components/PaymentForm'
+import Footer from './components/Footer';
 function App() {
 const [cart, setCart] = useState(() => {
   return JSON.parse(window.localStorage.getItem("cart")) || { items: {} }
@@ -45,7 +46,7 @@ const [cart, setCart] = useState(() => {
      </PriceContext.Provider>
       </NavContext.Provider>
      </CartContext.Provider>
-    
+     <Footer/>
    </Router>
    </>
   )

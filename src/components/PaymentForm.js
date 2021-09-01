@@ -58,7 +58,7 @@ export function PaymentForm() {
     
           </div>
           <div className=" w-1/4 mx-auto text-center font-bold  rounded-full mt-5 px-4 py-2 rounded-full  "> Cart Total: <span>{OrderPrice}</span></div>
-          <button onClick={()=>{Order()}} className="bg-yellow-500  rounded-full mx-auto flex mt-5 px-4 py-2 rounded-full hover:bg-black hover:text-white hover:shadow-lg hover:border-transparent ">Place Order</button>
+          <button onClick={()=>{Order()}} className="bg-yellow-500  rounded-full mx-auto flex mt-5 px-4 py-2 rounded-full hover:bg-black hover:text-white hover:shadow-lg hover:border-transparent mb-5 ">Place Order</button>
             {redirect?<Redirect to="/Cart"/>:""}
         </div>
   );
